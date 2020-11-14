@@ -1,0 +1,59 @@
+ _______________
+<  Hello Master >
+<   ->Read Me   >
+ ---------------
+   \
+    \
+        .--.
+       |o_o |
+       |:_/ |
+      //   \ \
+     (|     | )
+    /'\_   _/`\
+    \___)=(___/
+
+
+->All the .md files can be found inside the 'docs' folder. 
+
+ 
+->While developing the code with the apropiate pattern, I encountered some bugs, which made the application unrunable. 
+I returned to a previous, more stable version, this version does perfectly work, although it does not integrate the 
+complete pattern. But all the necessary files (Interfaces, Context and corresponding Classes), making full use and integration 
+of the pattern, appear in the code, in the 'src' folder. Also, you can find all the relevant explanations added as comments 
+in both the Stage.java*, the file that received the most changes, and in the corresponding new classes added to the code.
+
+*[So the changes made to Stage.java are more easy to spot, I wrote them down in this .txt in the following section.]
+
+->These are the main changes I made to Stage.java:
+
+//line 14
+I create the context and give it the Choosing Actor Strategy as a default. 
+
+//line 33
+Here I have to change the if condition 
+	 if (currentState == State.CPUMoving)
+by the new if statement 
+	if (current strategy == CPUMoving Strategy) 
+so the code knows if its the player turn or the CPU turn
+
+//line 44 
+
+In this line I have to change
+	currentState = State.ChoosingActor;
+by the new way of assigning the current strategy
+	current strategy = Choosing Actor Strategy
+so it changes back to the player turn after the CPU (and gives +1 turn to all the player actors).
+
+//line 61
+The previows version drawed the state on the corner of the screen, in this new refacted version, it has to draw the strategy used, not the state. 
+So instead of using 
+	g.drawString(currentState.toString(),720,20);
+we would have to use
+	g.drawString(currentStrategy.toString(),720,20);
+
+//line 104
+I deleted the switch statement, now the code should act in correspondance with the current strategy that is being used.
+You can see the PhaseStrategy Interface, the PhaseContext and their corresponding classes in the src folder.
+       
+
+
